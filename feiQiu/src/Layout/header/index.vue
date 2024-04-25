@@ -5,7 +5,9 @@
             <span>程程DJ管理平台</span>
         </div>
         <div class="header-right">
-            <el-avatar>租</el-avatar>
+            <el-avatar :size="30">租</el-avatar>
+            <label>租户管理员 LSC</label>
+            <el-icon class="icon"><ArrowDown /></el-icon>
         </div>
     </div>
 </template>
@@ -15,6 +17,8 @@ import {ref} from 'vue'
 <style lang="scss" scoped>
 .app-container{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #222B45;
     height: 58px;
     .header-left{
@@ -33,6 +37,30 @@ import {ref} from 'vue'
         color: #FFFFFF;
     }
     }
-    
+    .header-right{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        label {
+            margin-left: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 12px;
+        }
+        .icon{
+            color: #606266;
+            height: 1em;
+            width: 1em;
+            line-height: 1em;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            fill: currentColor;
+            margin-left: 5px;
+        }
+    }
 }
 </style>
