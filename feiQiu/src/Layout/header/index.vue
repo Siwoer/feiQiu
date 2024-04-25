@@ -5,6 +5,7 @@
             <span>程程DJ管理平台</span>
         </div>
         <div class="header-right">
+            <el-icon class="icon-full"><FullScreen /></el-icon>
             <el-avatar :size="30">租</el-avatar>
             <label>租户管理员 LSC</label>
             <el-icon class="icon"><ArrowDown /></el-icon>
@@ -48,6 +49,10 @@ import {ref} from 'vue'
             cursor: pointer;
             color: #fff;
             font-size: 12px;
+        }
+        .icon-full{
+            color: #fff;
+            margin-right: 10px;
         }
         .icon{
             color: #606266;
