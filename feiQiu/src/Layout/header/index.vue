@@ -8,8 +8,8 @@
       <span>程程DJ管理平台</span>
     </div>
     <div class="header-right">
-      <div class="left-content" @click="handleFullScreen">
-        <el-icon class="icon-full"><FullScreen /></el-icon>
+      <div class="left-content">
+        <el-icon class="icon-full" @click="toggle"><FullScreen /></el-icon>
       </div>
       <div class="right-content">
         <el-avatar :size="30">租</el-avatar>
@@ -20,20 +20,10 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { FullScreen } from "@element-plus/icons-vue";
 import { ref } from "vue";
-const fullScreen = ref(false);
+import { useFullscreen } from "@vueuse/core";
+const { toggle } = useFullscreen();
 // 全屏的方法
-const handleFullScreen = () => {
-  let element = document.documentElement;
-  if (element.requestFullscreen) {
-    element.requestFullscreen();
-    fullScreen.value = true;
-  }
-  if (fullScreen.value) {
-    document.exitFullscreen();
-  }
-};
 </script>
 <style lang="scss" scoped>
 .app-container {
@@ -75,6 +65,7 @@ const handleFullScreen = () => {
       color: #fff;
       margin: 0 10px;
       height: 100%;
+      width: 100%;
     }
     .icon-arrow {
       color: #606266;
