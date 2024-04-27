@@ -11,11 +11,18 @@
       <div class="left-content">
         <el-icon class="icon-full" @click="toggle"><FullScreen /></el-icon>
       </div>
-      <div class="right-content">
-        <el-avatar :size="30">租</el-avatar>
-        <label>租户管理员 LSC</label>
-        <el-icon class="icon-arrow"><ArrowDown /></el-icon>
-      </div>
+      <el-dropdown class="right-content" trigger="click">
+        <span>
+          <el-avatar :size="30">租</el-avatar>
+          <label>租户管理员 LSC</label>
+          <el-icon class="icon-arrow"><ArrowDown /></el-icon>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu v-for="item in dropdownList">
+            <el-dropdown-item>{{ item.Name }}</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </div>
   </div>
 </template>
@@ -23,7 +30,12 @@
 import { ref } from "vue";
 import { useFullscreen } from "@vueuse/core";
 const { toggle } = useFullscreen();
-// 全屏的方法
+const dropdownList = ref([
+  { ID: "1", Name: "切换角色" },
+  { ID: "2", Name: "修改密码" },
+  { ID: "3", Name: "清除缓存" },
+  { ID: "4", Name: "退出登录" },
+]);
 </script>
 <style lang="scss" scoped>
 .app-container {
@@ -69,14 +81,7 @@ const { toggle } = useFullscreen();
     }
     .icon-arrow {
       color: #606266;
-      height: 1em;
-      width: 1em;
-      line-height: 1em;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      fill: currentColor;
+      display: inline-block;
       margin-left: 5px;
     }
   }
